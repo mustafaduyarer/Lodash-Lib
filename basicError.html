@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Basic Error</title>
+  </head>
+  <body>
+
+  </body>
+
+  <script>
+   function siteComponent(func){
+    return func()
+   }
+
+
+   widget = () => {
+    return '<div>Hi there</div>';
+   }
+
+   try {
+   // console.log(siteComponent('oopps')) //hatali bolumu degistirmemiz gerekiyor cunku bizden bir func bekliyor biz string eklemimisz
+    console.log(siteComponent(widget)) //simdi duzeldi
+  } catch (e) {
+    console.log('An error occured with the siteComponent',e);
+   }
+   //console.log(siteComponent(widget))
+  //  console.log(siteComponent('oopps'))
+
+  </script>
+</html>

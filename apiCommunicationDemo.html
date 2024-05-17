@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>API Communication Demo</title>
+  </head>
+  <body>
+
+  </body>
+
+  <script>
+    class ApiError extends Error {
+      constructor(msg = 'An api error occurred', ...params) {
+        super(...params);
+        this.msg = msg;
+      }
+    }
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://restcountries.com/v2/all', true);
+    request.onload = function() {
+      if (request.status >= 200 && request.status < 400) {
+        var data = JSON.parse(request.responseText);
+        console.log('statuscode',request.status);
+        console.log(data);
+        console.log('statuscode',request.status);
+      } else {
+        throw new ApiError('ApiError', `An API error occurred with a status code of ${request.status}`);
+      }
+    };
+    request.send();
+  </script>
+</html>
